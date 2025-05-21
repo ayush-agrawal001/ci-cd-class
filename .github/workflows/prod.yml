@@ -9,10 +9,10 @@ jobs:
         name: Deploying everything to prod
         steps:
             -run: |
-            echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
-            mkdir -p /home/runner/.ssh
-            ls /home/runner/.ssh
-            touch /home/runner/.ssh/known_hosts
-            echo "${{ secrets.KNOWN_HOSTS }}" &> /home/runner/.ssh/known_hosts
-            chmod 700 /home/runner/ssh_key
-            ssh -i ~/ssh_key root@34.0.10.40 -t "cd ci-cd-class && git pull origin production && export PATH=/root/.nvm/versions/node/v22.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart 0 1 2"
+              echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
+              mkdir -p /home/runner/.ssh
+              ls /home/runner/.ssh
+              touch /home/runner/.ssh/known_hosts
+              echo "${{ secrets.KNOWN_HOSTS }}" &> /home/runner/.ssh/known_hosts
+              chmod 700 /home/runner/ssh_key
+              ssh -i ~/ssh_key root@34.0.10.40 -t "cd ci-cd-class && git pull origin production && export PATH=/root/.nvm/versions/node/v22.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart 0 1 2"
