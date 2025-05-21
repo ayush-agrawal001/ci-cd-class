@@ -11,5 +11,5 @@ jobs:
       - run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
           chmod 700 /home/runner/ssh_key
-          ssh  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/ssh_key root@34.47.137.234 -t "cd ci-cd-class && git pull origin main && export PATH=/root/.nvm/versions/node/v22.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart 0 1 2"
+          ssh  -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/ssh_key ayushFirstInstance@34.47.137.234 -t "cd ci-cd-class && git pull origin main && export PATH=/root/.nvm/versions/node/v22.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart 0 1 2"
           echo "Deployed successfully"
